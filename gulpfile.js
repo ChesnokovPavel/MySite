@@ -68,6 +68,7 @@ gulp.task('clear', function(){
 gulp.task('watch', gulp.parallel('scripts', 'css-libs', 'browser-sync', function(){
 	gulp.watch('app/sass/**/*.sass', gulp.series ('sass'));
 	gulp.watch('app/*.html').on('change', browserSync.reload);
+	gulp.watch('app/css/fonts.css').on('change', browserSync.reload);
 	gulp.watch('app/js/**/*.js').on('change', browserSync.reload);
 }));
 
@@ -75,6 +76,7 @@ gulp.task('build', gulp.parallel('clean', 'img', 'sass', 'scripts', function() {
 	var buildCss = gulp.src([
 		'app/css/main.css',
 		'app/css/libs.min.css',
+		'app/css/fonts.css'
 		])
 		.pipe(gulp.dest('dist/css'))
 
